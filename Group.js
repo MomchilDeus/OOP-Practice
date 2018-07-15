@@ -12,3 +12,15 @@ class Group {
     return new Group(group)
   }
 }
+
+// Complete with its own iterator
+Group.prototype[Symbol.iterator] = function() {
+  return {
+    next: () => {
+      return {
+        done: !(this.group.length),
+        value: this.group.shift()
+      }
+    }
+  }
+}
